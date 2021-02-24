@@ -1,1 +1,4 @@
 examples/cache-dir
+__pycache__/
+.ipynb_checkpoints
+
