@@ -13,6 +13,11 @@ pip install -r requirements.txt
 If you experience errors importing `snapml`, you may be be missing the OpenMP runtime library. 
 In this case, please see the detailed [installation guide](https://snapml.readthedocs.io/en/latest/installation.html) for your platform.
 
+The following system libraries are also required for downloading and extracting datasets:
+```
+sudo apt-get install wget bzip2 gzip tar unzip
+```
+
 ## Datasets
 
 This repository contains code to automatically download and pre-process datasets from a variety of different sources:
@@ -21,13 +26,6 @@ This repository contains code to automatically download and pre-process datasets
 3. [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.php)
 
 To use datasets hosted on Kaggle, you will need a Kaggle account and to [install an API token](https://www.kaggle.com/docs/api) on your machine.  
-
-The following tools should be installed on your machine in order handle data extraction:
-```bash
-wget
-bunzip2
-gunzip
-```
 
 Datasets are downloaded and pre-processed once, and stored in the cache directory:
 ```bash
