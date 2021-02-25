@@ -46,7 +46,7 @@ Find out more about Snap ML at the following links:
 ## Contact
  
 For questions about the examples or Snap ML in general please contact:
-- [Thomas Parnell](tpa@zurich.ibm.com)
-- [Andreea Anghel](aan@zurich.ibm.com)
-- [Martin Petermann](map@zurich.ibm.com)
+- [Thomas Parnell](mailto:tpa@zurich.ibm.com)
+- [Andreea Anghel](mailto:aan@zurich.ibm.com)
+- [Martin Petermann](mailto:map@zurich.ibm.com)
 
