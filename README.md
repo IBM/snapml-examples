@@ -40,7 +40,7 @@ Find out more about Snap ML at the following links:
 
 - [Snap ML installation guide](https://snapml.readthedocs.io/en/latest/installation.html)
 - [Snap ML documentation](https://snapml.readthedocs.io/en/latest/)
-- [Project homepage](https://snapml.readthedocs.io/en/latest/)
+- [Project homepage](https://www.zurich.ibm.com/snapml/)
 - [Snap ML on PyPI](https://pypi.org/project/snapml/)
 
 ## Contact
