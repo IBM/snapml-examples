@@ -10,7 +10,7 @@ Install dependencies using pip:
 pip install -r requirements.txt
 ```
 
-If you experience errors importing `snapml`, you may be be missing the OpenMP runtime library. 
+If you experience errors importing `snapml`, you may be missing the OpenMP runtime library. 
 In this case, please see the detailed [installation guide](https://snapml.readthedocs.io/en/latest/installation.html) for your platform.
 
 The following system libraries are also required for downloading and extracting datasets:
