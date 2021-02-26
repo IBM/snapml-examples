@@ -1,6 +1,6 @@
 # IBM Snap ML Examples
 
-Example notebooks to demonstrate how to use the IBM Snap ML library. 
+Example notebooks to demonstrate how to use the IBM Snap Machine Learning (Snap ML) library. 
 
 ## Prerequisites 
 
