@@ -52,7 +52,7 @@ class Dataset():
         os.makedirs(self.working_dir, exist_ok=True)
 
         print("Downloading %s dataset." % (self.name))
- 
+        print("Please note: subsequent calls to `get_train_test_split` will read cached binary data, and thus be much faster.")
         self.download_raw_data()
 
         print("Preprocessing %s dataset." % (self.name))
