@@ -13,11 +13,13 @@
 # limitations under the License.
 
 import os
-import subprocess
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import normalize
+import requests
+from io import BytesIO
+import gzip
 
 class Higgs():
 
@@ -39,17 +41,19 @@ class Higgs():
     def get_train_test_split(self):
 
         if not self.__check_files_exist(self.files):
+            
+            os.makedirs(self.working_dir, exist_ok=True)
 
-            p = subprocess.Popen(['mkdir', '-p', self.working_dir])
-            p.wait()
+            url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/00280/HIGGS.csv.gz'
+            
+            print("Downloading HIGGS dataset.")
 
-            p = subprocess.Popen(['wget', 'https://archive.ics.uci.edu/ml/machine-learning-databases/00280/HIGGS.csv.gz'], cwd=self.working_dir)
-            p.wait()
+            r = requests.get(url, allow_redirects=True)
 
-            p = subprocess.Popen(['gunzip', 'HIGGS.csv.gz'], cwd=self.working_dir)
-            p.wait()
+            df = pd.read_csv(BytesIO(gzip.decompress(r.content)), header=None)
 
-            df = pd.read_csv(os.path.join(self.working_dir, 'HIGGS.csv'), header=None)
+            print("Raw data:")
+            print(df.head())
 
             y = df.pop(0).values
             X = df.values
@@ -58,12 +62,16 @@ class Higgs():
 
             X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
 
+            print("Writing cached, preprocessed data.")
             np.save(os.path.join(self.working_dir, 'HIGGS.X_train'), X_train)
             np.save(os.path.join(self.working_dir, 'HIGGS.X_test'), X_test)
             np.save(os.path.join(self.working_dir, 'HIGGS.y_train'), y_train)
             np.save(os.path.join(self.working_dir, 'HIGGS.y_test'), y_test)
+            
 
         else:
+
+            print("Loading cached HIGGS dataset.")
 
             X_train = np.load(os.path.join(self.working_dir, 'HIGGS.X_train.npy'))
             X_test = np.load(os.path.join(self.working_dir, 'HIGGS.X_test.npy'))
