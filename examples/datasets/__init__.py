@@ -15,9 +15,6 @@
 # binary classification, libsvm
 from datasets.avazu import Avazu
 
-# binary classification, libsvm
-from datasets.criteo_kaggle import CriteoKaggle
-
 # binary classification, uci
 from datasets.higgs import Higgs
 
