@@ -2,22 +2,21 @@
 
 Example notebooks to demonstrate how to use the IBM Snap Machine Learning (Snap ML) library. 
 
-## Prerequisites 
+## Getting started 
 
-Install dependencies using pip:
+Create an Anaconda environment with the everything you need to run the examples installed:
 
 ```bash
-pip install -r requirements.txt
+conda env create -f environment.yml
+conda activate snapenv
+jupyter notebook
 ```
+With the Jupyter UI open in your web browser, navigate to the `examples` folder and explore the various example notebook provided.
+
+## Troubleshooting
 
 If you experience errors importing `snapml`, you may be missing the OpenMP runtime library. 
 In this case, please see the detailed [installation guide](https://snapml.readthedocs.io/en/latest/installation.html) for your platform.
-
-The following system libraries are also required for downloading and extracting datasets:
-```
-wget bzip2 gzip tar unzip
-```
-Install them using `apt install` on Ubuntu or the equivalent package manager on your platform.
 
 ## Datasets
 
@@ -28,7 +27,7 @@ This repository contains code to automatically download and pre-process datasets
 
 To use datasets hosted on Kaggle, you will need a Kaggle account and to [install an API token](https://www.kaggle.com/docs/api) on your machine.  
 
-Datasets are downloaded, extracted and preprocessed once, and stored in the cache directory:
+Datasets are downloaded, extracted and preprocessed once, and stored in the cache directory, which by default is set to:
 ```bash
 examples/cache_dir
 ```
