@@ -1,0 +1,16 @@
+name: snapenv
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python==3.8
+  - git
+  - pip
+  - numpy
+  - scipy
+  - scikit-learn
+  - pandas
+  - notebook
+  - pip:
+    - kaggle
+    - snapml==1.7.0
