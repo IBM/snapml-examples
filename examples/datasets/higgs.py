@@ -12,71 +12,44 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from .dataset import Dataset
 import os
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import normalize
-import requests
-from io import BytesIO
-import gzip
 
-class Higgs():
+class Higgs(Dataset):
 
     def __init__(self, cache_dir):
-        self.name = type(self).__name__
-        self.cache_dir = cache_dir
-        self.working_dir = os.path.join(self.cache_dir, self.name)
-        self.files = ['HIGGS.X_train.npy',
-                      'HIGGS.X_test.npy',
-                      'HIGGS.y_train.npy',
-                      'HIGGS.y_test.npy']
+        files = ['HIGGS.X_train.npy',
+                 'HIGGS.X_test.npy',
+                 'HIGGS.y_train.npy',
+                 'HIGGS.y_test.npy']
+        super().__init__(cache_dir, type(self).__name__, files)
+        self.raw_file = os.path.join(self.working_dir, 'HIGGS.csv.gz')
+     
+    def download_raw_data(self):
+        self._download_file('https://archive.ics.uci.edu/ml/machine-learning-databases/00280/HIGGS.csv.gz', self.raw_file)
 
-    def __check_files_exist(self, files):
-        files_exist = True
-        for file in files:
-            files_exist &= os.path.isfile(os.path.join(self.working_dir, file))
-        return files_exist
+    def preprocess_data(self):
+        df = pd.read_csv(self.raw_file, compression='gzip', header=None)
+        y = df.pop(0).values
+        X = df.values
+        X = normalize(X, axis=1, norm='l1')
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
+        return X_train, X_test, y_train, y_test
 
-    def get_train_test_split(self):
+    def write_cache_data(self, X_train, X_test, y_train, y_test):
+        np.save(os.path.join(self.working_dir, 'HIGGS.X_train'), X_train)
+        np.save(os.path.join(self.working_dir, 'HIGGS.X_test'), X_test)
+        np.save(os.path.join(self.working_dir, 'HIGGS.y_train'), y_train)
+        np.save(os.path.join(self.working_dir, 'HIGGS.y_test'), y_test)
 
-        if not self.__check_files_exist(self.files):
-            
-            os.makedirs(self.working_dir, exist_ok=True)
-
-            url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/00280/HIGGS.csv.gz'
-            
-            print("Downloading HIGGS dataset.")
-
-            r = requests.get(url, allow_redirects=True)
-
-            df = pd.read_csv(BytesIO(gzip.decompress(r.content)), header=None)
-
-            print("Raw data:")
-            print(df.head())
-
-            y = df.pop(0).values
-            X = df.values
-
-            X = normalize(X, axis=1, norm='l1')
-
-            X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
-
-            print("Writing cached, preprocessed data.")
-            np.save(os.path.join(self.working_dir, 'HIGGS.X_train'), X_train)
-            np.save(os.path.join(self.working_dir, 'HIGGS.X_test'), X_test)
-            np.save(os.path.join(self.working_dir, 'HIGGS.y_train'), y_train)
-            np.save(os.path.join(self.working_dir, 'HIGGS.y_test'), y_test)
-            
-
-        else:
-
-            print("Loading cached HIGGS dataset.")
-
-            X_train = np.load(os.path.join(self.working_dir, 'HIGGS.X_train.npy'))
-            X_test = np.load(os.path.join(self.working_dir, 'HIGGS.X_test.npy'))
-            y_train = np.load(os.path.join(self.working_dir, 'HIGGS.y_train.npy'))
-            y_test = np.load(os.path.join(self.working_dir, 'HIGGS.y_test.npy'))
-
+    def read_cache_data(self):
+        X_train = np.load(os.path.join(self.working_dir, 'HIGGS.X_train.npy'))
+        X_test = np.load(os.path.join(self.working_dir, 'HIGGS.X_test.npy'))
+        y_train = np.load(os.path.join(self.working_dir, 'HIGGS.y_train.npy'))
+        y_test = np.load(os.path.join(self.working_dir, 'HIGGS.y_test.npy'))
         return X_train, X_test, y_train, y_test
 

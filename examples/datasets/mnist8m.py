@@ -12,66 +12,44 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from .dataset import Dataset
 import os
-import subprocess
 import numpy as np
 from sklearn.datasets import load_svmlight_file
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import normalize
 from scipy.sparse import save_npz, load_npz
+import bz2
 
-class Mnist8m():
+class Mnist8m(Dataset):
 
     def __init__(self, cache_dir):
-        self.name = type(self).__name__
-        self.cache_dir = cache_dir
-        self.working_dir = os.path.join(self.cache_dir, self.name)
-        self.files = ['mnist8m.X_train.npz',
-                      'mnist8m.X_test.npz',
-                      'mnist8m.y_train.npy',
-                      'mnist8m.y_test.npy']
+        files = ['mnist8m.X_train.npz',
+                 'mnist8m.X_test.npz',
+                 'mnist8m.y_train.npy',
+                 'mnist8m.y_test.npy']
+        super().__init__(cache_dir, type(self).__name__, files)
+        self.raw_file = os.path.join(self.working_dir, 'mnist8m.scale.bz2')
+    
+    def download_raw_data(self):
+        self._download_file('https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multiclass/mnist8m.scale.bz2', self.raw_file)
+ 
+    def preprocess_data(self):
+        X, y = load_svmlight_file(self.raw_file)
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
+        X_train = normalize(X_train, axis=1, norm="l1")
+        X_test = normalize(X_test, axis=1, norm="l1")
+        return X_train, X_test, y_train, y_test
 
-    def __check_files_exist(self, files):
-        files_exist = True
-        for file in files:
-            files_exist &= os.path.isfile(os.path.join(self.working_dir, file))
-        return files_exist
+    def write_cache_data(self, X_train, X_test, y_train, y_test):
+        save_npz(os.path.join(self.working_dir, 'mnist8m.X_train'), X_train, compressed=False)
+        save_npz(os.path.join(self.working_dir, 'mnist8m.X_test'), X_test,  compressed=False)
+        np.save(os.path.join(self.working_dir, 'mnist8m.y_train'), y_train)
+        np.save(os.path.join(self.working_dir, 'mnist8m.y_test'), y_test)
 
-    def get_train_test_split(self):
-
-        if not self.__check_files_exist(self.files):
-
-            print("files do not exist")
-
-            p = subprocess.Popen(['mkdir', '-p', self.working_dir])
-            p.wait()
-
-            p = subprocess.Popen(['wget', 'https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multiclass/mnist8m.scale.bz2'], cwd=self.working_dir)
-            p.wait()
-
-            p = subprocess.Popen(['bunzip2', 'mnist8m.scale.bz2'], cwd=self.working_dir)
-            p.wait()
-
-            X, y = load_svmlight_file(os.path.join(self.working_dir, "mnist8m.scale"))
-
-            X_train, X_test, y_train, y_test = train_test_split(
-                X, y, test_size=0.25, random_state=42
-            )
-
-            X_train = normalize(X_train, axis=1, norm="l1")
-            X_test = normalize(X_test, axis=1, norm="l1")
-
-  
-            save_npz(os.path.join(self.working_dir, 'mnist8m.X_train'), X_train, compressed=False)
-            save_npz(os.path.join(self.working_dir, 'mnist8m.X_test'), X_test,  compressed=False)
-            np.save(os.path.join(self.working_dir, 'mnist8m.y_train'), y_train)
-            np.save(os.path.join(self.working_dir, 'mnist8m.y_test'), y_test)
-
-        else:
-
-            X_train = load_npz(os.path.join(self.working_dir, 'mnist8m.X_train.npz'))
-            X_test  = load_npz(os.path.join(self.working_dir, 'mnist8m.X_test.npz'))
-            y_train = np.load(os.path.join(self.working_dir, 'mnist8m.y_train.npy'))
-            y_test = np.load(os.path.join(self.working_dir, 'mnist8m.y_test.npy'))
-
+    def read_cache_data(self):
+        X_train = load_npz(os.path.join(self.working_dir, 'mnist8m.X_train.npz'))
+        X_test  = load_npz(os.path.join(self.working_dir, 'mnist8m.X_test.npz'))
+        y_train = np.load(os.path.join(self.working_dir, 'mnist8m.y_train.npy'))
+        y_test = np.load(os.path.join(self.working_dir, 'mnist8m.y_test.npy'))
         return X_train, X_test, y_train, y_test
