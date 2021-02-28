@@ -6,8 +6,7 @@ Example notebooks to demonstrate how to use the IBM Snap Machine Learning (Snap 
 
 Install either [Anaconda](https://docs.anaconda.com/anaconda/install/) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html).
 
-Opne the Terminal on MacOS or Linux or the Anaconda/Miniconda prompt on Windows, 
-and follow the steps below to create an Anaconda environment with everything you need to run the examples.
+Open the Terminal (on MacOS or Linux) or the Anaconda/Miniconda prompt (on Windows), and follow the steps below to create a conda environment with everything you need to run the examples.
 
 ```bash
 conda install git
