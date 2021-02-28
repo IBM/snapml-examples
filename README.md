@@ -7,6 +7,7 @@ Example notebooks to demonstrate how to use the IBM Snap Machine Learning (Snap 
 Create an Anaconda environment with the everything you need to run the examples installed:
 
 ```bash
+conda install git
 git clone https://github.com/IBM/snapml-examples
 cd snapml-examples
 git checkout tpa-win
