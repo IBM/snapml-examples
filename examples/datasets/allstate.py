@@ -38,6 +38,13 @@ class Allstate(Dataset):
         p = subprocess.Popen(['kaggle', 'competitions', 'download', '-c', 'ClaimPredictionChallenge'], cwd=self.working_dir)
         p.wait()
 
+        if not os.path.isfile(self.raw_file):
+            raise RuntimeError(
+                """Could not download competition data from Kaggle. Please ensure: 
+                (a) you have installed a Kaggle API token: https://www.kaggle.com/docs/api 
+                (b) you have accepted the competition rules: https://www.kaggle.com/c/ClaimPredictionChallenge/rules
+                """
+            ) 
     def preprocess_data(self):
 
         with ZipFile(self.raw_file, 'r') as a:
