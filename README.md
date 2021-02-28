@@ -8,6 +8,7 @@ Create an Anaconda environment with the everything you need to run the examples 
 
 ```bash
 git clone https://github.com/IBM/snapml-examples
+cd snapml-examples
 git checkout tpa-win
 conda env create -f environment.yml
 conda activate snapenv
