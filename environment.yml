@@ -12,6 +12,7 @@ dependencies:
   - scipy==1.5.2
   - ipywidgets
   - tqdm
+  - psutil
   - pip:
     - kaggle
     - snapml==1.7.0
