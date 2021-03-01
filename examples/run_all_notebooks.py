@@ -26,7 +26,8 @@ parser.add_argument('--save', action="store_true", help="save state of notebook"
 args = parser.parse_args()
 
 dirs = [
-    'training/logistic_regression'
+    'training/logistic_regression',
+    'training/decision_tree'
 ]
 
 df = pd.DataFrame()
@@ -60,9 +61,8 @@ for d in dirs:
             scraps = sb.read_notebook(nb).scraps
             res = pd.Series(scraps['result'].data, name=filename_with_path)
             df = df.append(res)
-            print(res)
+            #print(res)
 
 
-pd.set_option('display.max_columns', None)
-print(df)
+print(df[['dataset','model','speed_up','score_diff']])
 df.to_csv("benchmark.csv")
