@@ -15,3 +15,4 @@ dependencies:
   - pip:
     - kaggle
     - snapml==1.7.0
+    - scrapbook
