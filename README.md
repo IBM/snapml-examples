@@ -12,7 +12,6 @@ Open the Terminal (on MacOS or Linux) or the Anaconda/Miniconda prompt (on Windo
 conda install git
 git clone https://github.com/IBM/snapml-examples
 cd snapml-examples
-git checkout tpa-win
 conda env create -f environment.yml
 conda activate snapenv
 jupyter notebook
