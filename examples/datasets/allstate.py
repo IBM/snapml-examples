@@ -129,8 +129,8 @@ class Allstate(Dataset):
         return X_train, X_test, y_train, y_test
 
     def write_cache_data(self, X_train, X_test, y_train, y_test):
-        np.save(os.path.join(self.working_dir, 'allstate.X_train'), y_train)
-        np.save(os.path.join(self.working_dir, 'allstate.X_test'), y_test)
+        np.save(os.path.join(self.working_dir, 'allstate.X_train'), X_train)
+        np.save(os.path.join(self.working_dir, 'allstate.X_test'), X_test)
         np.save(os.path.join(self.working_dir, 'allstate.y_train'), y_train)
         np.save(os.path.join(self.working_dir, 'allstate.y_test'), y_test)
 
