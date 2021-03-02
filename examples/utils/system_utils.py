@@ -12,28 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# binary classification, libsvm
-from datasets.avazu import Avazu
+import platform
+import os
+import psutil
+import json
+import snapml
+import sklearn
 
-# binary classification, uci
-from datasets.higgs import Higgs
-
-# binary classification, kaggle
-from datasets.allstate import Allstate
-
-# binary classification, libsvm
-from datasets.epsilon import Epsilon
-
-# binary classification, libsvm
-from datasets.susy import Susy
-
-# binary classification, libsvm
-from datasets.mnist8m import Mnist8m
-
-# to-add
-# creditcard (binary classification, kaggle)
-# rossmann (regression, kaggle
-# price-prediction (regression, kaggle)
-# santander (binary classificatin, kaggle)
-
-
+def get_environment():
+    return {
+        'platform': platform.platform(),
+        'cpu_count': os.cpu_count(),
+        'cpu_freq_min': psutil.cpu_freq().min,
+        'cpu_freq_max': psutil.cpu_freq().max,
+        'total_memory': psutil.virtual_memory().total/1024/1024/1024,
+        'snapml_version': snapml.__version__,
+        'sklearn_version': sklearn.__version__,
+    }

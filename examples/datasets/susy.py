@@ -12,66 +12,43 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from .dataset import Dataset
 import os
-import subprocess
+import pandas as pd
 import numpy as np
-from sklearn.datasets import load_svmlight_file
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import normalize
 
-class Susy():
+class Susy(Dataset):
 
     def __init__(self, cache_dir):
-        self.name = type(self).__name__
-        self.cache_dir = cache_dir
-        self.working_dir = os.path.join(self.cache_dir, self.name)
-        self.files = ['SUSY.X_train.npy',
-                      'SUSY.X_test.npy',
-                      'SUSY.y_train.npy',
-                      'SUSY.y_test.npy']
+        files = ['SUSY.X_train.npy',
+                 'SUSY.X_test.npy',
+                 'SUSY.y_train.npy',
+                 'SUSY.y_test.npy']
+        super().__init__(cache_dir, type(self).__name__, files)
+        self.raw_file = os.path.join(self.working_dir, 'SUSY.csv.gz')
+     
+    def download_raw_data(self):
+        self._download_file('https://archive.ics.uci.edu/ml/machine-learning-databases/00279/SUSY.csv.gz', self.raw_file)
 
-    def __check_files_exist(self, files):
-        files_exist = True
-        for file in files:
-            files_exist &= os.path.isfile(os.path.join(self.working_dir, file))
-        return files_exist
-
-    def get_train_test_split(self):
-
-        if not self.__check_files_exist(self.files):
-
-            p = subprocess.Popen(['mkdir', '-p', self.working_dir])
-            p.wait()
-
-            p = subprocess.Popen(['wget', 'https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary/SUSY.bz2'], cwd=self.working_dir)
-            p.wait()
-
-            p = subprocess.Popen(['bunzip2', 'SUSY.bz2'], cwd=self.working_dir)
-            p.wait()
-
-            X, y = load_svmlight_file(os.path.join(self.working_dir, "SUSY"))
-
-            X_train, X_test, y_train, y_test = train_test_split(
-                X, y, test_size=0.25, random_state=42
-            )
-
-            X_train = np.array(X_train.todense(), dtype=np.float32)
-            X_test = np.array(X_test.todense(), dtype=np.float32)
-
-            X_train = normalize(X_train, axis=1, norm="l1")
-            X_test = normalize(X_test, axis=1, norm="l1")
-
-            np.save(os.path.join(self.working_dir, 'SUSY.X_train'), X_train)
-            np.save(os.path.join(self.working_dir, 'SUSY.X_test'), X_test)
-            np.save(os.path.join(self.working_dir, 'SUSY.y_train'), y_train)
-            np.save(os.path.join(self.working_dir, 'SUSY.y_test'), y_test)
-
-        else:
-
-            X_train = np.load(os.path.join(self.working_dir, 'SUSY.X_train.npy'))
-            X_test = np.load(os.path.join(self.working_dir, 'SUSY.X_test.npy'))
-            y_train = np.load(os.path.join(self.working_dir, 'SUSY.y_train.npy'))
-            y_test = np.load(os.path.join(self.working_dir, 'SUSY.y_test.npy'))
-
+    def preprocess_data(self):
+        df = pd.read_csv(self.raw_file, compression='gzip', header=None)
+        y = df.pop(0).values
+        X = df.values
+        X = normalize(X, axis=1, norm='l1')
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
         return X_train, X_test, y_train, y_test
 
+    def write_cache_data(self, X_train, X_test, y_train, y_test):
+        np.save(os.path.join(self.working_dir, 'SUSY.X_train'), X_train)
+        np.save(os.path.join(self.working_dir, 'SUSY.X_test'), X_test)
+        np.save(os.path.join(self.working_dir, 'SUSY.y_train'), y_train)
+        np.save(os.path.join(self.working_dir, 'SUSY.y_test'), y_test)
+
+    def read_cache_data(self):
+        X_train = np.load(os.path.join(self.working_dir, 'SUSY.X_train.npy'))
+        X_test = np.load(os.path.join(self.working_dir, 'SUSY.X_test.npy'))
+        y_train = np.load(os.path.join(self.working_dir, 'SUSY.y_train.npy'))
+        y_test = np.load(os.path.join(self.working_dir, 'SUSY.y_test.npy'))
+        return X_train, X_test, y_train, y_test

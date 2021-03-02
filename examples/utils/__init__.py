@@ -12,28 +12,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# binary classification, libsvm
-from datasets.avazu import Avazu
-
-# binary classification, uci
-from datasets.higgs import Higgs
-
-# binary classification, kaggle
-from datasets.allstate import Allstate
-
-# binary classification, libsvm
-from datasets.epsilon import Epsilon
-
-# binary classification, libsvm
-from datasets.susy import Susy
-
-# binary classification, libsvm
-from datasets.mnist8m import Mnist8m
-
-# to-add
-# creditcard (binary classification, kaggle)
-# rossmann (regression, kaggle
-# price-prediction (regression, kaggle)
-# santander (binary classificatin, kaggle)
-
-
+from utils.system_utils import get_environment
