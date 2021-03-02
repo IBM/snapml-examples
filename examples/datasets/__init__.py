@@ -33,10 +33,11 @@ from datasets.susy import Susy
 # binary classification, libsvm
 from datasets.mnist8m import Mnist8m
 
+# binary classification, kaggle
+from datasets.credit_card_fraud import CreditCardFraud
+
 # to-add
-# creditcard (binary classification, kaggle)
 # rossmann (regression, kaggle
 # price-prediction (regression, kaggle)
 # santander (binary classificatin, kaggle)
-
 
