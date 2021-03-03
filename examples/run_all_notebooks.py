@@ -27,7 +27,8 @@ args = parser.parse_args()
 
 dirs = [
     'training/logistic_regression',
-    'training/decision_tree'
+    'training/decision_tree',
+    'training/random_forest'
 ]
 
 df = pd.DataFrame()
