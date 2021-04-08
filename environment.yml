@@ -1,4 +1,4 @@
-name: snapenv
+name: snapenv2
 channels:
   - defaults
   - conda-forge
@@ -15,5 +15,5 @@ dependencies:
   - psutil
   - pip:
     - kaggle
-    - snapml==1.7.0
+    - snapml==1.7.1
     - scrapbook
