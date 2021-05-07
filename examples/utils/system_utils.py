@@ -18,6 +18,8 @@ import psutil
 import json
 import snapml
 import sklearn
+import xgboost
+import lightgbm
 
 def get_environment():
     return {
@@ -28,4 +30,6 @@ def get_environment():
         'total_memory': psutil.virtual_memory().total/1024/1024/1024,
         'snapml_version': snapml.__version__,
         'sklearn_version': sklearn.__version__,
+        'xgboost_version': xgboost.__version__,
+        'lightgbm_version': lightgbm.__version__,
     }
