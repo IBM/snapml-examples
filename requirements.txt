@@ -1,2 +1,2 @@
-snapml==1.7.0
+snapml==1.7.1
 kaggle
