@@ -28,7 +28,8 @@ args = parser.parse_args()
 dirs = [
     'training/logistic_regression',
     'training/decision_tree',
-    'training/random_forest'
+    'training/random_forest',
+    'training/support_vector_machine',
 ]
 
 df = pd.DataFrame()
@@ -66,4 +67,6 @@ for d in dirs:
 
 
 print(df[['dataset','model','speed_up','score_diff']])
-df.to_csv("benchmark.csv")
+
+if args.execute:
+    df.to_csv("benchmark-v1.8.1.csv")
