@@ -19,6 +19,7 @@ from nbconvert.preprocessors import ExecutePreprocessor
 import scrapbook as sb
 import pandas as pd
 import argparse
+import snapml
 
 parser = argparse.ArgumentParser(description='Automated execution and analysis of all examples')
 parser.add_argument('--execute', action="store_true", help="execute notebook")
@@ -31,6 +32,10 @@ dirs = [
     'training/random_forest',
     'training/support_vector_machine',
 ]
+
+if args.execute:
+    outfile = "benchmark-v%s.csv" % (snapml.__version__)
+    print(">> Will write benchmark to file: %s" % (outfile))
 
 df = pd.DataFrame()
 
@@ -69,4 +74,4 @@ for d in dirs:
 print(df[['dataset','model','speed_up','score_diff']])
 
 if args.execute:
-    df.to_csv("benchmark-v1.8.1.csv")
+    df.to_csv(outfile)
