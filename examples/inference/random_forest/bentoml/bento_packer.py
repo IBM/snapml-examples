@@ -13,7 +13,7 @@ snapml_model = RandomForestClassifier()
 # To run Snap ML using the zDNN library (to run on the Z AI accelerator)
 snapml_model.import_model("model.pmml", "pmml", "zdnn_tensors")
 
-# To run Snap ML on the CPU
+# To run Snap ML on CPU
 # snapml_model.import_model("model.pmml", "pmml")
 
 # Set the number of predict threads used at inference time
