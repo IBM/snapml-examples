@@ -1,10 +1,3 @@
-## Prepare the Python environment
-
-```
-pip3 install bentoml==0.13.1
-pip3 install scikit-learn numpy scipy pandas sklearn2pmml snapml
-```
-
 ## Train a scikit-learn using the sklearn breast cancer dataset.
 
 We first train a Random Forest Classifier model using the breast cancer sklearn dataset. We save the model as a PMML pipeline.
