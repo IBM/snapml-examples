@@ -8,7 +8,7 @@ from sklearn2pmml import PMMLPipeline
 X, y = datasets.load_breast_cancer(return_X_y=True)
 
 # Train a PMML pipeline and save it in PMML format
-# To be used by SnapML which imports the Sklearn model into its optimized predict engine
+# To be used by Snap ML which imports the Sklearn model into its optimized predict engine
 
 model = RandomForestClassifier(n_estimators = 100, max_depth=4)
 pipeline = PMMLPipeline([("model", model)]).fit(X,y)
