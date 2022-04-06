@@ -1,9 +1,11 @@
+##
+
 ## Train a scikit-learn using the sklearn breast cancer dataset.
 
 We first train a Random Forest Classifier model using the breast cancer sklearn dataset. We save the model as a PMML pipeline.
 
 ```
-python3 train.py
+python train.py
 ```
 
 ## Define the BentoML service interface
@@ -15,7 +17,7 @@ Before model serving, the first step is to create a prediction service class. Th
 The command below prepares the BentoML service for deployment. It imports the sklearn model from the PMML file into Snap ML and sets the number of CPU threads to be used by each predict call (each BentoML worker) at inference time. 
 
 ```
-python3 bento_packer.py
+python bento_packer.py
 ```
 
 ## Start the BentoML server
@@ -31,5 +33,5 @@ bentoml serve-gunicorn --do-not-track -q -w 1 BreastCancerClassifier:latest
 Test the BentoML service by sending an HTTP request for classification.
 
 ```
-python3 test-service.py
+python test-service.py
 ```
