@@ -4,7 +4,7 @@ Example notebooks to demonstrate how to use the IBM Snap Machine Learning (Snap 
 
 ## Getting started 
 
-Install either [Anaconda](https://docs.anaconda.com/anaconda/install/) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html). For Z systems, visit this page [Anaconda][https://docs.anaconda.com/anaconda/install/linux-s390x/].
+Install either [Anaconda](https://docs.anaconda.com/anaconda/install/) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html). For s390x systems, visit this page [Anaconda-s390x](https://docs.anaconda.com/anaconda/install/linux-s390x/).
 
 Open the Terminal (on MacOS or Linux) or the Anaconda/Miniconda prompt (on Windows), and follow the steps below to create a conda environment with everything you need to run the examples.
 
@@ -18,7 +18,7 @@ jupyter notebook
 ```
 With the Jupyter UI open in your web browser, navigate to the `examples` folder and explore the various example notebook provided.
 
-For Z systems follow the steps below to create the necessary conda environment.
+For s390x systems follow the steps below to create the necessary conda environment.
 
 ```bash
 apt-get install libssl-dev
