@@ -21,6 +21,8 @@ With the Jupyter UI open in your web browser, navigate to the `examples` folder 
 For Z systems follow the steps below to create the necessary conda environment.
 
 ```bash
+apt-get install libssl-dev
+export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=True
 conda install git
 git clone https://github.com/IBM/snapml-examples
 cd snapml-examples
