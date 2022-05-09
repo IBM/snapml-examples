@@ -4,7 +4,9 @@ Example notebooks to demonstrate how to use the IBM Snap Machine Learning (Snap 
 
 ## Getting started 
 
-Install either [Anaconda](https://docs.anaconda.com/anaconda/install/) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html). For s390x systems, visit this page [Anaconda-s390x](https://docs.anaconda.com/anaconda/install/linux-s390x/).
+### Linux/MacOS/Windows on x86 systems
+
+Install either [Anaconda](https://docs.anaconda.com/anaconda/install/) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html).
 
 Open the Terminal (on MacOS or Linux) or the Anaconda/Miniconda prompt (on Windows), and follow the steps below to create a conda environment with everything you need to run the examples.
 
@@ -18,10 +20,24 @@ jupyter notebook
 ```
 With the Jupyter UI open in your web browser, navigate to the `examples` folder and explore the various example notebook provided.
 
-For s390x systems follow the steps below to create the necessary conda environment.
+### Linux on Z (s390x) systems
 
+Install [Anaconda](https://docs.anaconda.com/anaconda/install/linux-s390x/) for Linux on Z.
+ 
+On s390x some of the dependencies required to run these examples need to be compiled from source. 
+This happens automatically when creating the anaconda environment, but it is necessary to install some development tools beforehand.
+
+On Ubuntu systems:
 ```bash
-apt-get install libssl-dev
+apt-get install build-essential cmake libssl-dev
+```
+On RHEL systems:
+```bash
+yum groupinstall 'Development Tools'
+yum install cmake openssl-devel
+```
+After installing these tools, follow the steps below:
+```bash
 export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=True
 conda install git
 git clone https://github.com/IBM/snapml-examples
