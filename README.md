@@ -69,7 +69,7 @@ If something goes wrong while extracting the data (e.g. a dependency missing), i
 
 The `GraphFeaturePreprocessor` example uses a synthethic dataset available here:
 ```bash
-examples/graph-feature-preprocessor
+examples/datasets/graph_feature_preprocessor
 ```
 
 ## Resources
