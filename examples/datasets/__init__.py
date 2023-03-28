@@ -33,6 +33,9 @@ from datasets.mnist8m import Mnist8m
 # binary classification, kaggle
 from datasets.credit_card_fraud import CreditCardFraud
 
+#regression, kaggle
+from datasets.m5_forecasting import M5Forecasting
+
 # to-add
 # rossmann (regression, kaggle
 # price-prediction (regression, kaggle)
