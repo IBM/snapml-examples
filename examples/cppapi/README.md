@@ -19,7 +19,7 @@ cd build
 cmake -DSNAPML_LIB_DIR=$SNAPML_LIB_DIR -DSNAPML_INCLUDE_DIR=$SNAPML_INCLUDE_DIR ..
 make -j
 ```
-where `SNAPML\_LIB\_DIR`=`python -c 'import snapml; import os ; print(os.path.dirname(snapml.__file__))'` and `SNAPML\_INCLUDE\_DIR`=`${SNAPML_LIB_DIR}/include`.
+where `SNAPML_LIB_DIR`=`python -c 'import snapml; import os ; print(os.path.dirname(snapml.__file__))'` and `SNAPML_INCLUDE_DIR`=`${SNAPML_LIB_DIR}/include`.
 
 ## 2. Run the decision tree example
 To run the decision tree example:
