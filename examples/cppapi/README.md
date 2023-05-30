@@ -1,3 +1,5 @@
+# Snap ML C++ API Examples
+
 In these examples we demonstrate how to use the Snap ML C++ API 1) to train tree models (decision tree, random forest, boosting machine) in Snap ML, 2) to run inference on Snap ML-trained tree models, and 3) to import tree-ensemble models trained using external frameworks (such as XGBoost) into Snap ML, and run inference on them. We provide three examples: 1) decision tree (`src/capi-dt-example.cpp`), 2) random forest (`src/capi-rf-example.cpp`), and 3) boosting machine (`src/capi-boost-example.cpp`).
 
 ## 0.Generate the ML models
@@ -17,7 +19,7 @@ cd build
 cmake -DSNAPML_LIB_DIR=$SNAPML_LIB_DIR -DSNAPML_INCLUDE_DIR=$SNAPML_INCLUDE_DIR ..
 make -j
 ```
-where SNAPML\_LIB\_DIR=`python -c 'import snapml; import os ; print(os.path.dirname(snapml.__file__))'` and SNAPML\_INCLUDE\_DIR=`${SNAPML_LIB_DIR}/include`.
+where `SNAPML\_LIB\_DIR`=`python -c 'import snapml; import os ; print(os.path.dirname(snapml.__file__))'` and `SNAPML\_INCLUDE\_DIR`=`${SNAPML_LIB_DIR}/include`.
 
 ## 2. Run the decision tree example
 To run the decision tree example:
