@@ -4,9 +4,6 @@ project(testcoreapi)
 add_compile_definitions(_GLIBCXX_USE_CXX11_ABI=0)
 add_link_options(-D_GLIBCXX_USE_CXX11_ABI=0)
 
-# pip install snapml
-# python -c 'import snapml; import os ; print(os.path.dirname(snapml.__file__))'
-
 option(SNAPML_LIB_DIR "SNAPML_LIB_DIR" "")
 option(SNAPML_INCLUDE_DIR "SNAPML_INCLUDE_DIR" "")
 
