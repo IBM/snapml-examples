@@ -1,0 +1,3583 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_4" xmlns:data="http://jpmml.org/jpmml-model/InlineTable" version="4.4">
+	<Header>
+		<Application name="JPMML-SkLearn library" version="1.7.10"/>
+		<Timestamp>2023-05-30T11:33:10Z</Timestamp>
+	</Header>
+	<MiningBuildTask>
+		<Extension name="repr">PMMLPipeline(steps=[('model', RandomForestClassifier(random_state=42))])</Extension>
+	</MiningBuildTask>
+	<DataDictionary>
+		<DataField name="y" optype="categorical" dataType="double">
+			<Value value="0.0"/>
+			<Value value="1.0"/>
+		</DataField>
+		<DataField name="x1" optype="continuous" dataType="float"/>
+		<DataField name="x2" optype="continuous" dataType="float"/>
+		<DataField name="x3" optype="continuous" dataType="float"/>
+		<DataField name="x4" optype="continuous" dataType="float"/>
+	</DataDictionary>
+	<MiningModel functionName="classification" algorithmName="sklearn.ensemble._forest.RandomForestClassifier">
+		<MiningSchema>
+			<MiningField name="y" usageType="target"/>
+			<MiningField name="x2"/>
+			<MiningField name="x1"/>
+			<MiningField name="x3"/>
+			<MiningField name="x4"/>
+		</MiningSchema>
+		<Output>
+			<OutputField name="probability(0.0)" optype="continuous" dataType="double" feature="probability" value="0.0"/>
+			<OutputField name="probability(1.0)" optype="continuous" dataType="double" feature="probability" value="1.0"/>
+		</Output>
+		<LocalTransformations>
+			<DerivedField name="double(x2)" optype="continuous" dataType="double">
+				<FieldRef field="x2"/>
+			</DerivedField>
+			<DerivedField name="double(x1)" optype="continuous" dataType="double">
+				<FieldRef field="x1"/>
+			</DerivedField>
+			<DerivedField name="double(x3)" optype="continuous" dataType="double">
+				<FieldRef field="x3"/>
+			</DerivedField>
+			<DerivedField name="double(x4)" optype="continuous" dataType="double">
+				<FieldRef field="x4"/>
+			</DerivedField>
+		</LocalTransformations>
+		<Segmentation multipleModelMethod="average">
+			<Segment id="1">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="38.5"/>
+							<Node>
+								<SimplePredicate field="double(x1)" operator="lessOrEqual" value="9.0"/>
+								<Node score="0.0" recordCount="7">
+									<SimplePredicate field="double(x3)" operator="lessOrEqual" value="4.0"/>
+									<ScoreDistribution value="0.0" recordCount="7"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="5">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="5"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="8">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="8"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="4">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="4"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="2">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="44.5"/>
+							<Node score="0.0" recordCount="5">
+								<SimplePredicate field="double(x3)" operator="lessOrEqual" value="4.0"/>
+								<ScoreDistribution value="0.0" recordCount="5"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+							<Node score="1.0" recordCount="4">
+								<SimplePredicate field="double(x1)" operator="lessOrEqual" value="9.0"/>
+								<ScoreDistribution value="0.0" recordCount="0"/>
+								<ScoreDistribution value="1.0" recordCount="4"/>
+							</Node>
+							<Node score="0.0" recordCount="4">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="4"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="11">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="11"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="3">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="27.5"/>
+							<Node>
+								<SimplePredicate field="double(x2)" operator="lessOrEqual" value="12.5"/>
+								<Node score="0.0" recordCount="5">
+									<SimplePredicate field="double(x4)" operator="lessOrEqual" value="5.5"/>
+									<ScoreDistribution value="0.0" recordCount="5"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="6">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="6"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="6">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="6"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="7">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="7"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="4">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="44.5"/>
+							<Node>
+								<SimplePredicate field="double(x1)" operator="lessOrEqual" value="9.0"/>
+								<Node score="0.0" recordCount="5">
+									<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+									<ScoreDistribution value="0.0" recordCount="5"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="5">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="5"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="7">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="7"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="7">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="7"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="5">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x3)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<Node>
+								<SimplePredicate field="double(x3)" operator="lessOrEqual" value="14.0"/>
+								<Node score="0.0" recordCount="3">
+									<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+									<ScoreDistribution value="0.0" recordCount="3"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="5">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="5"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="6">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="6"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="10">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="10"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="6">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<Node score="0.0" recordCount="11">
+								<SimplePredicate field="double(x1)" operator="lessOrEqual" value="4.0"/>
+								<ScoreDistribution value="0.0" recordCount="11"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+							<Node score="1.0" recordCount="1">
+								<SimplePredicate field="double(x1)" operator="lessOrEqual" value="9.0"/>
+								<ScoreDistribution value="0.0" recordCount="0"/>
+								<ScoreDistribution value="1.0" recordCount="1"/>
+							</Node>
+							<Node score="0.0" recordCount="4">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="4"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="8">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="8"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="7">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="27.5"/>
+							<Node score="0.0" recordCount="9">
+								<SimplePredicate field="double(x1)" operator="lessOrEqual" value="4.0"/>
+								<ScoreDistribution value="0.0" recordCount="9"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+							<Node score="1.0" recordCount="2">
+								<SimplePredicate field="double(x4)" operator="lessOrEqual" value="20.0"/>
+								<ScoreDistribution value="0.0" recordCount="0"/>
+								<ScoreDistribution value="1.0" recordCount="2"/>
+							</Node>
+							<Node score="0.0" recordCount="7">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="7"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="6">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="6"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="8">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="4">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="4.0"/>
+							<ScoreDistribution value="0.0" recordCount="4"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="8">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="12.5"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="8"/>
+						</Node>
+						<Node score="0.0" recordCount="7">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="38.5"/>
+							<ScoreDistribution value="0.0" recordCount="7"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="5">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="9">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x3)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="27.5"/>
+							<Node>
+								<SimplePredicate field="double(x3)" operator="lessOrEqual" value="14.0"/>
+								<Node score="0.0" recordCount="3">
+									<SimplePredicate field="double(x4)" operator="lessOrEqual" value="5.5"/>
+									<ScoreDistribution value="0.0" recordCount="3"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="7">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="7"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="5">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="5"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="9">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="9"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="10">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x3)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="10">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+							<ScoreDistribution value="0.0" recordCount="10"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="7">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="20.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="7"/>
+						</Node>
+						<Node score="0.0" recordCount="5">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="44.5"/>
+							<ScoreDistribution value="0.0" recordCount="5"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="2">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="2"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="11">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x3)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="6">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="4.0"/>
+							<ScoreDistribution value="0.0" recordCount="6"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="7">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="14.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="7"/>
+						</Node>
+						<Node score="0.0" recordCount="5">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<ScoreDistribution value="0.0" recordCount="5"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="6">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="6"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="12">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="38.5"/>
+							<Node>
+								<SimplePredicate field="double(x4)" operator="lessOrEqual" value="20.0"/>
+								<Node score="0.0" recordCount="6">
+									<SimplePredicate field="double(x4)" operator="lessOrEqual" value="5.5"/>
+									<ScoreDistribution value="0.0" recordCount="6"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="6">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="6"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="7">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="7"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="5">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="13">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="44.5"/>
+							<Node score="0.0" recordCount="8">
+								<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+								<ScoreDistribution value="0.0" recordCount="8"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+							<Node score="1.0" recordCount="5">
+								<SimplePredicate field="double(x1)" operator="lessOrEqual" value="9.0"/>
+								<ScoreDistribution value="0.0" recordCount="0"/>
+								<ScoreDistribution value="1.0" recordCount="5"/>
+							</Node>
+							<Node score="0.0" recordCount="6">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="6"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="5">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="14">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="8">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="4.0"/>
+							<ScoreDistribution value="0.0" recordCount="8"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="7">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="9.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="7"/>
+						</Node>
+						<Node score="0.0" recordCount="7">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="38.5"/>
+							<ScoreDistribution value="0.0" recordCount="7"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="2">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="2"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="15">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="9">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="5.5"/>
+							<ScoreDistribution value="0.0" recordCount="9"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="7">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="12.5"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="7"/>
+						</Node>
+						<Node score="0.0" recordCount="5">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<ScoreDistribution value="0.0" recordCount="5"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="3">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="3"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="16">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x3)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="44.5"/>
+							<Node>
+								<SimplePredicate field="double(x4)" operator="lessOrEqual" value="20.0"/>
+								<Node score="0.0" recordCount="6">
+									<SimplePredicate field="double(x1)" operator="lessOrEqual" value="4.0"/>
+									<ScoreDistribution value="0.0" recordCount="6"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="6">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="6"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="9">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="9"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="3">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="3"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="17">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="7">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+							<ScoreDistribution value="0.0" recordCount="7"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node>
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<Node score="1.0" recordCount="6">
+								<SimplePredicate field="double(x1)" operator="lessOrEqual" value="9.0"/>
+								<ScoreDistribution value="0.0" recordCount="0"/>
+								<ScoreDistribution value="1.0" recordCount="6"/>
+							</Node>
+							<Node score="0.0" recordCount="2">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="2"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="9">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="9"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="18">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x3)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="4">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="4.0"/>
+							<ScoreDistribution value="0.0" recordCount="4"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="9">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="20.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="9"/>
+						</Node>
+						<Node score="0.0" recordCount="6">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<ScoreDistribution value="0.0" recordCount="6"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="5">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="19">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="44.5"/>
+							<Node>
+								<SimplePredicate field="double(x1)" operator="lessOrEqual" value="9.0"/>
+								<Node score="0.0" recordCount="7">
+									<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+									<ScoreDistribution value="0.0" recordCount="7"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="4">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="4"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="10">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="10"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="3">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="3"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="20">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="6">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="4.0"/>
+							<ScoreDistribution value="0.0" recordCount="6"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="10">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="20.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="10"/>
+						</Node>
+						<Node score="0.0" recordCount="6">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="27.5"/>
+							<ScoreDistribution value="0.0" recordCount="6"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="2">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="2"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="21">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x3)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<Node score="0.0" recordCount="6">
+								<SimplePredicate field="double(x3)" operator="lessOrEqual" value="4.0"/>
+								<ScoreDistribution value="0.0" recordCount="6"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+							<Node score="1.0" recordCount="5">
+								<SimplePredicate field="double(x3)" operator="lessOrEqual" value="14.0"/>
+								<ScoreDistribution value="0.0" recordCount="0"/>
+								<ScoreDistribution value="1.0" recordCount="5"/>
+							</Node>
+							<Node score="0.0" recordCount="6">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="6"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="7">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="7"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="22">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<Node>
+								<SimplePredicate field="double(x4)" operator="lessOrEqual" value="20.0"/>
+								<Node score="0.0" recordCount="3">
+									<SimplePredicate field="double(x4)" operator="lessOrEqual" value="5.5"/>
+									<ScoreDistribution value="0.0" recordCount="3"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="5">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="5"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="7">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="7"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="9">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="9"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="23">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="44.5"/>
+							<Node score="0.0" recordCount="7">
+								<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+								<ScoreDistribution value="0.0" recordCount="7"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+							<Node score="1.0" recordCount="4">
+								<SimplePredicate field="double(x1)" operator="lessOrEqual" value="9.0"/>
+								<ScoreDistribution value="0.0" recordCount="0"/>
+								<ScoreDistribution value="1.0" recordCount="4"/>
+							</Node>
+							<Node score="0.0" recordCount="5">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="5"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="8">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="8"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="24">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="38.5"/>
+							<Node>
+								<SimplePredicate field="double(x3)" operator="lessOrEqual" value="14.0"/>
+								<Node score="0.0" recordCount="6">
+									<SimplePredicate field="double(x3)" operator="lessOrEqual" value="4.0"/>
+									<ScoreDistribution value="0.0" recordCount="6"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="4">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="4"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="8">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="8"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="6">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="6"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="25">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<Node score="0.0" recordCount="6">
+								<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+								<ScoreDistribution value="0.0" recordCount="6"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+							<Node score="1.0" recordCount="4">
+								<SimplePredicate field="double(x1)" operator="lessOrEqual" value="9.0"/>
+								<ScoreDistribution value="0.0" recordCount="0"/>
+								<ScoreDistribution value="1.0" recordCount="4"/>
+							</Node>
+							<Node score="0.0" recordCount="4">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="4"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="10">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="10"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="26">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="6">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="4.0"/>
+							<ScoreDistribution value="0.0" recordCount="6"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="8">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="9.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="8"/>
+						</Node>
+						<Node score="0.0" recordCount="6">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="27.5"/>
+							<ScoreDistribution value="0.0" recordCount="6"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="4">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="4"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="27">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x3)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="5">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="5.5"/>
+							<ScoreDistribution value="0.0" recordCount="5"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="8">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="14.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="8"/>
+						</Node>
+						<Node score="0.0" recordCount="5">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="44.5"/>
+							<ScoreDistribution value="0.0" recordCount="5"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="6">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="6"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="28">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x3)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="44.5"/>
+							<Node score="0.0" recordCount="8">
+								<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+								<ScoreDistribution value="0.0" recordCount="8"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+							<Node score="1.0" recordCount="5">
+								<SimplePredicate field="double(x4)" operator="lessOrEqual" value="20.0"/>
+								<ScoreDistribution value="0.0" recordCount="0"/>
+								<ScoreDistribution value="1.0" recordCount="5"/>
+							</Node>
+							<Node score="0.0" recordCount="6">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="6"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="5">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="29">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<Node>
+								<SimplePredicate field="double(x4)" operator="lessOrEqual" value="20.0"/>
+								<Node score="0.0" recordCount="5">
+									<SimplePredicate field="double(x1)" operator="lessOrEqual" value="4.0"/>
+									<ScoreDistribution value="0.0" recordCount="5"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="5">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="5"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="7">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="7"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="7">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="7"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="30">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="27.5"/>
+							<Node>
+								<SimplePredicate field="double(x1)" operator="lessOrEqual" value="9.0"/>
+								<Node score="0.0" recordCount="5">
+									<SimplePredicate field="double(x1)" operator="lessOrEqual" value="4.0"/>
+									<ScoreDistribution value="0.0" recordCount="5"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="3">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="3"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="8">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="8"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="8">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="8"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="31">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x3)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="27.5"/>
+							<Node score="0.0" recordCount="7">
+								<SimplePredicate field="double(x3)" operator="lessOrEqual" value="4.0"/>
+								<ScoreDistribution value="0.0" recordCount="7"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+							<Node score="1.0" recordCount="5">
+								<SimplePredicate field="double(x4)" operator="lessOrEqual" value="20.0"/>
+								<ScoreDistribution value="0.0" recordCount="0"/>
+								<ScoreDistribution value="1.0" recordCount="5"/>
+							</Node>
+							<Node score="0.0" recordCount="7">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="7"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="5">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="32">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="5">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+							<ScoreDistribution value="0.0" recordCount="5"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="11">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="12.5"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="11"/>
+						</Node>
+						<Node score="0.0" recordCount="6">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="27.5"/>
+							<ScoreDistribution value="0.0" recordCount="6"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="2">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="2"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="33">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<Node>
+								<SimplePredicate field="double(x1)" operator="lessOrEqual" value="9.0"/>
+								<Node score="0.0" recordCount="2">
+									<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+									<ScoreDistribution value="0.0" recordCount="2"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="6">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="6"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="6">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="6"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="10">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="10"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="34">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="8">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="4.0"/>
+							<ScoreDistribution value="0.0" recordCount="8"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="8">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="14.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="8"/>
+						</Node>
+						<Node score="0.0" recordCount="5">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="27.5"/>
+							<ScoreDistribution value="0.0" recordCount="5"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="3">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="3"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="35">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x3)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="6">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="4.0"/>
+							<ScoreDistribution value="0.0" recordCount="6"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="7">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="9.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="7"/>
+						</Node>
+						<Node score="0.0" recordCount="7">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<ScoreDistribution value="0.0" recordCount="7"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="4">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="4"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="36">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x3)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="6">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+							<ScoreDistribution value="0.0" recordCount="6"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="8">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="14.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="8"/>
+						</Node>
+						<Node score="0.0" recordCount="6">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<ScoreDistribution value="0.0" recordCount="6"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="4">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="4"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="37">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="8">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="4.0"/>
+							<ScoreDistribution value="0.0" recordCount="8"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="7">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="14.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="7"/>
+						</Node>
+						<Node score="0.0" recordCount="4">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="38.5"/>
+							<ScoreDistribution value="0.0" recordCount="4"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="5">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="38">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x3)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<Node>
+								<SimplePredicate field="double(x2)" operator="lessOrEqual" value="12.5"/>
+								<Node score="0.0" recordCount="5">
+									<SimplePredicate field="double(x3)" operator="lessOrEqual" value="4.0"/>
+									<ScoreDistribution value="0.0" recordCount="5"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="3">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="3"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="10">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="10"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="6">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="6"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="39">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="5">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="4.0"/>
+							<ScoreDistribution value="0.0" recordCount="5"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="7">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="20.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="7"/>
+						</Node>
+						<Node score="0.0" recordCount="7">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<ScoreDistribution value="0.0" recordCount="7"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="5">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="40">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="7">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="4.0"/>
+							<ScoreDistribution value="0.0" recordCount="7"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="6">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="9.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="6"/>
+						</Node>
+						<Node score="0.0" recordCount="6">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<ScoreDistribution value="0.0" recordCount="6"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="5">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="41">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="38.5"/>
+							<Node>
+								<SimplePredicate field="double(x2)" operator="lessOrEqual" value="12.5"/>
+								<Node score="0.0" recordCount="5">
+									<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+									<ScoreDistribution value="0.0" recordCount="5"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="6">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="6"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="7">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="7"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="6">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="6"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="42">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="27.5"/>
+							<Node score="0.0" recordCount="10">
+								<SimplePredicate field="double(x1)" operator="lessOrEqual" value="4.0"/>
+								<ScoreDistribution value="0.0" recordCount="10"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+							<Node score="1.0" recordCount="4">
+								<SimplePredicate field="double(x3)" operator="lessOrEqual" value="14.0"/>
+								<ScoreDistribution value="0.0" recordCount="0"/>
+								<ScoreDistribution value="1.0" recordCount="4"/>
+							</Node>
+							<Node score="0.0" recordCount="5">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="5"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="5">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="43">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="38.5"/>
+							<Node score="0.0" recordCount="9">
+								<SimplePredicate field="double(x1)" operator="lessOrEqual" value="4.0"/>
+								<ScoreDistribution value="0.0" recordCount="9"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+							<Node score="1.0" recordCount="4">
+								<SimplePredicate field="double(x4)" operator="lessOrEqual" value="20.0"/>
+								<ScoreDistribution value="0.0" recordCount="0"/>
+								<ScoreDistribution value="1.0" recordCount="4"/>
+							</Node>
+							<Node score="0.0" recordCount="6">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="6"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="5">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="44">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="3">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="4.0"/>
+							<ScoreDistribution value="0.0" recordCount="3"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="9">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="12.5"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="9"/>
+						</Node>
+						<Node score="0.0" recordCount="4">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="27.5"/>
+							<ScoreDistribution value="0.0" recordCount="4"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="8">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="8"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="45">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="44.5"/>
+							<Node>
+								<SimplePredicate field="double(x1)" operator="lessOrEqual" value="9.0"/>
+								<Node score="0.0" recordCount="4">
+									<SimplePredicate field="double(x3)" operator="lessOrEqual" value="4.0"/>
+									<ScoreDistribution value="0.0" recordCount="4"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="6">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="6"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="8">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="8"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="6">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="6"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="46">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x3)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<Node>
+								<SimplePredicate field="double(x1)" operator="lessOrEqual" value="9.0"/>
+								<Node score="0.0" recordCount="4">
+									<SimplePredicate field="double(x3)" operator="lessOrEqual" value="4.0"/>
+									<ScoreDistribution value="0.0" recordCount="4"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="7">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="7"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="7">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="7"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="6">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="6"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="47">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x3)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="8">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="5.5"/>
+							<ScoreDistribution value="0.0" recordCount="8"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="9">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="20.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="9"/>
+						</Node>
+						<Node score="0.0" recordCount="4">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="44.5"/>
+							<ScoreDistribution value="0.0" recordCount="4"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="3">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="3"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="48">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="10">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="4.0"/>
+							<ScoreDistribution value="0.0" recordCount="10"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="7">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="12.5"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="7"/>
+						</Node>
+						<Node score="0.0" recordCount="1">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="27.5"/>
+							<ScoreDistribution value="0.0" recordCount="1"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="6">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="6"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="49">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="6">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+							<ScoreDistribution value="0.0" recordCount="6"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="8">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="12.5"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="8"/>
+						</Node>
+						<Node score="0.0" recordCount="5">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="44.5"/>
+							<ScoreDistribution value="0.0" recordCount="5"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="5">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="50">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="5">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+							<ScoreDistribution value="0.0" recordCount="5"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="7">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="20.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="7"/>
+						</Node>
+						<Node score="0.0" recordCount="6">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="27.5"/>
+							<ScoreDistribution value="0.0" recordCount="6"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="6">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="6"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="51">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="27.5"/>
+							<Node>
+								<SimplePredicate field="double(x3)" operator="lessOrEqual" value="14.0"/>
+								<Node score="0.0" recordCount="4">
+									<SimplePredicate field="double(x1)" operator="lessOrEqual" value="4.0"/>
+									<ScoreDistribution value="0.0" recordCount="4"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="6">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="6"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="6">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="6"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="8">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="8"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="52">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="9">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="4.0"/>
+							<ScoreDistribution value="0.0" recordCount="9"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="6">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="12.5"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="6"/>
+						</Node>
+						<Node score="0.0" recordCount="4">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="27.5"/>
+							<ScoreDistribution value="0.0" recordCount="4"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="5">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="53">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="9">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+							<ScoreDistribution value="0.0" recordCount="9"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="7">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="12.5"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="7"/>
+						</Node>
+						<Node score="0.0" recordCount="3">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="44.5"/>
+							<ScoreDistribution value="0.0" recordCount="3"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="5">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="54">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="6">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="5.5"/>
+							<ScoreDistribution value="0.0" recordCount="6"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="10">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="12.5"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="10"/>
+						</Node>
+						<Node score="0.0" recordCount="4">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<ScoreDistribution value="0.0" recordCount="4"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="4">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="4"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="55">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="27.5"/>
+							<Node score="0.0" recordCount="8">
+								<SimplePredicate field="double(x4)" operator="lessOrEqual" value="5.5"/>
+								<ScoreDistribution value="0.0" recordCount="8"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+							<Node score="1.0" recordCount="5">
+								<SimplePredicate field="double(x2)" operator="lessOrEqual" value="12.5"/>
+								<ScoreDistribution value="0.0" recordCount="0"/>
+								<ScoreDistribution value="1.0" recordCount="5"/>
+							</Node>
+							<Node score="0.0" recordCount="7">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="7"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="4">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="4"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="56">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="7">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="5.5"/>
+							<ScoreDistribution value="0.0" recordCount="7"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="8">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="12.5"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="8"/>
+						</Node>
+						<Node score="0.0" recordCount="4">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<ScoreDistribution value="0.0" recordCount="4"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="5">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="57">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="3">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="4.0"/>
+							<ScoreDistribution value="0.0" recordCount="3"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node>
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="38.5"/>
+							<Node score="1.0" recordCount="6">
+								<SimplePredicate field="double(x3)" operator="lessOrEqual" value="14.0"/>
+								<ScoreDistribution value="0.0" recordCount="0"/>
+								<ScoreDistribution value="1.0" recordCount="6"/>
+							</Node>
+							<Node score="0.0" recordCount="2">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="2"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="13">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="13"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="58">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="8">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+							<ScoreDistribution value="0.0" recordCount="8"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node>
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<Node score="1.0" recordCount="6">
+								<SimplePredicate field="double(x4)" operator="lessOrEqual" value="20.0"/>
+								<ScoreDistribution value="0.0" recordCount="0"/>
+								<ScoreDistribution value="1.0" recordCount="6"/>
+							</Node>
+							<Node score="0.0" recordCount="3">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="3"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="7">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="7"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="59">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="38.5"/>
+							<Node>
+								<SimplePredicate field="double(x1)" operator="lessOrEqual" value="9.0"/>
+								<Node score="0.0" recordCount="4">
+									<SimplePredicate field="double(x1)" operator="lessOrEqual" value="4.0"/>
+									<ScoreDistribution value="0.0" recordCount="4"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="3">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="3"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="8">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="8"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="9">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="9"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="60">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="38.5"/>
+							<Node>
+								<SimplePredicate field="double(x3)" operator="lessOrEqual" value="14.0"/>
+								<Node score="0.0" recordCount="5">
+									<SimplePredicate field="double(x3)" operator="lessOrEqual" value="4.0"/>
+									<ScoreDistribution value="0.0" recordCount="5"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="4">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="4"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="8">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="8"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="7">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="7"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="61">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x3)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="6">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="4.0"/>
+							<ScoreDistribution value="0.0" recordCount="6"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="7">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="20.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="7"/>
+						</Node>
+						<Node score="0.0" recordCount="8">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="38.5"/>
+							<ScoreDistribution value="0.0" recordCount="8"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="3">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="3"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="62">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x3)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="38.5"/>
+							<Node>
+								<SimplePredicate field="double(x4)" operator="lessOrEqual" value="20.0"/>
+								<Node score="0.0" recordCount="2">
+									<SimplePredicate field="double(x3)" operator="lessOrEqual" value="4.0"/>
+									<ScoreDistribution value="0.0" recordCount="2"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="8">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="8"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="9">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="9"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="5">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="63">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="38.5"/>
+							<Node>
+								<SimplePredicate field="double(x3)" operator="lessOrEqual" value="14.0"/>
+								<Node score="0.0" recordCount="1">
+									<SimplePredicate field="double(x1)" operator="lessOrEqual" value="4.0"/>
+									<ScoreDistribution value="0.0" recordCount="1"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="7">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="7"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="9">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="9"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="7">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="7"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="64">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="44.5"/>
+							<Node>
+								<SimplePredicate field="double(x2)" operator="lessOrEqual" value="12.5"/>
+								<Node score="0.0" recordCount="4">
+									<SimplePredicate field="double(x3)" operator="lessOrEqual" value="4.0"/>
+									<ScoreDistribution value="0.0" recordCount="4"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="4">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="4"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="7">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="7"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="9">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="9"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="65">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x3)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<Node>
+								<SimplePredicate field="double(x3)" operator="lessOrEqual" value="14.0"/>
+								<Node score="0.0" recordCount="4">
+									<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+									<ScoreDistribution value="0.0" recordCount="4"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="4">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="4"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="7">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="7"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="9">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="9"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="66">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x3)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="44.5"/>
+							<Node>
+								<SimplePredicate field="double(x3)" operator="lessOrEqual" value="14.0"/>
+								<Node score="0.0" recordCount="4">
+									<SimplePredicate field="double(x4)" operator="lessOrEqual" value="5.5"/>
+									<ScoreDistribution value="0.0" recordCount="4"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="6">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="6"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="9">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="9"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="5">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="67">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<Node score="0.0" recordCount="9">
+								<SimplePredicate field="double(x1)" operator="lessOrEqual" value="4.0"/>
+								<ScoreDistribution value="0.0" recordCount="9"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+							<Node score="1.0" recordCount="3">
+								<SimplePredicate field="double(x1)" operator="lessOrEqual" value="9.0"/>
+								<ScoreDistribution value="0.0" recordCount="0"/>
+								<ScoreDistribution value="1.0" recordCount="3"/>
+							</Node>
+							<Node score="0.0" recordCount="5">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="5"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="7">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="7"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="68">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="38.5"/>
+							<Node>
+								<SimplePredicate field="double(x2)" operator="lessOrEqual" value="12.5"/>
+								<Node score="0.0" recordCount="4">
+									<SimplePredicate field="double(x3)" operator="lessOrEqual" value="4.0"/>
+									<ScoreDistribution value="0.0" recordCount="4"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="6">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="6"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="11">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="11"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="3">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="3"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="69">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="5">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="5.5"/>
+							<ScoreDistribution value="0.0" recordCount="5"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="9">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="9.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="9"/>
+						</Node>
+						<Node score="0.0" recordCount="4">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="27.5"/>
+							<ScoreDistribution value="0.0" recordCount="4"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="6">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="6"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="70">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="9">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+							<ScoreDistribution value="0.0" recordCount="9"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="8">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="14.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="8"/>
+						</Node>
+						<Node score="0.0" recordCount="4">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="44.5"/>
+							<ScoreDistribution value="0.0" recordCount="4"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="3">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="3"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="71">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="6">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="4.0"/>
+							<ScoreDistribution value="0.0" recordCount="6"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="8">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="9.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="8"/>
+						</Node>
+						<Node score="0.0" recordCount="3">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="27.5"/>
+							<ScoreDistribution value="0.0" recordCount="3"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="7">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="7"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="72">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="44.5"/>
+							<Node>
+								<SimplePredicate field="double(x3)" operator="lessOrEqual" value="14.0"/>
+								<Node score="0.0" recordCount="6">
+									<SimplePredicate field="double(x1)" operator="lessOrEqual" value="4.0"/>
+									<ScoreDistribution value="0.0" recordCount="6"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="4">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="4"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="9">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="9"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="5">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="73">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="38.5"/>
+							<Node score="0.0" recordCount="9">
+								<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+								<ScoreDistribution value="0.0" recordCount="9"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+							<Node score="1.0" recordCount="4">
+								<SimplePredicate field="double(x1)" operator="lessOrEqual" value="9.0"/>
+								<ScoreDistribution value="0.0" recordCount="0"/>
+								<ScoreDistribution value="1.0" recordCount="4"/>
+							</Node>
+							<Node score="0.0" recordCount="5">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="5"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="6">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="6"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="74">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="27.5"/>
+							<Node>
+								<SimplePredicate field="double(x4)" operator="lessOrEqual" value="20.0"/>
+								<Node score="0.0" recordCount="3">
+									<SimplePredicate field="double(x1)" operator="lessOrEqual" value="4.0"/>
+									<ScoreDistribution value="0.0" recordCount="3"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="5">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="5"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="8">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="8"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="8">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="8"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="75">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<Node>
+								<SimplePredicate field="double(x4)" operator="lessOrEqual" value="20.0"/>
+								<Node score="0.0" recordCount="5">
+									<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+									<ScoreDistribution value="0.0" recordCount="5"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="4">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="4"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="9">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="9"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="6">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="6"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="76">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="8">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="5.5"/>
+							<ScoreDistribution value="0.0" recordCount="8"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="6">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="9.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="6"/>
+						</Node>
+						<Node score="0.0" recordCount="5">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="38.5"/>
+							<ScoreDistribution value="0.0" recordCount="5"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="5">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="77">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x3)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="6">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="4.0"/>
+							<ScoreDistribution value="0.0" recordCount="6"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="8">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="9.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="8"/>
+						</Node>
+						<Node score="0.0" recordCount="6">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<ScoreDistribution value="0.0" recordCount="6"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="4">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="4"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="78">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<Node>
+								<SimplePredicate field="double(x1)" operator="lessOrEqual" value="9.0"/>
+								<Node score="0.0" recordCount="8">
+									<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+									<ScoreDistribution value="0.0" recordCount="8"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="3">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="3"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="10">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="10"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="3">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="3"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="79">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="27.5"/>
+							<Node>
+								<SimplePredicate field="double(x2)" operator="lessOrEqual" value="12.5"/>
+								<Node score="0.0" recordCount="5">
+									<SimplePredicate field="double(x3)" operator="lessOrEqual" value="4.0"/>
+									<ScoreDistribution value="0.0" recordCount="5"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="3">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="3"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="6">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="6"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="10">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="10"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="80">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="27.5"/>
+							<Node>
+								<SimplePredicate field="double(x3)" operator="lessOrEqual" value="14.0"/>
+								<Node score="0.0" recordCount="5">
+									<SimplePredicate field="double(x3)" operator="lessOrEqual" value="4.0"/>
+									<ScoreDistribution value="0.0" recordCount="5"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="5">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="5"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="7">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="7"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="7">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="7"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="81">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x3)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<Node>
+								<SimplePredicate field="double(x3)" operator="lessOrEqual" value="14.0"/>
+								<Node score="0.0" recordCount="3">
+									<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+									<ScoreDistribution value="0.0" recordCount="3"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="8">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="8"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="8">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="8"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="5">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="82">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="4">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+							<ScoreDistribution value="0.0" recordCount="4"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="8">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="12.5"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="8"/>
+						</Node>
+						<Node score="0.0" recordCount="6">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<ScoreDistribution value="0.0" recordCount="6"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="6">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="6"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="83">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="44.5"/>
+							<Node>
+								<SimplePredicate field="double(x3)" operator="lessOrEqual" value="14.0"/>
+								<Node score="0.0" recordCount="6">
+									<SimplePredicate field="double(x1)" operator="lessOrEqual" value="4.0"/>
+									<ScoreDistribution value="0.0" recordCount="6"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="4">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="4"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="9">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="9"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="5">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="84">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="9">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="4.0"/>
+							<ScoreDistribution value="0.0" recordCount="9"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="6">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="12.5"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="6"/>
+						</Node>
+						<Node score="0.0" recordCount="5">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="44.5"/>
+							<ScoreDistribution value="0.0" recordCount="5"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="4">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="4"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="85">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="27.5"/>
+							<Node>
+								<SimplePredicate field="double(x4)" operator="lessOrEqual" value="20.0"/>
+								<Node score="0.0" recordCount="6">
+									<SimplePredicate field="double(x4)" operator="lessOrEqual" value="5.5"/>
+									<ScoreDistribution value="0.0" recordCount="6"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="4">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="4"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="7">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="7"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="7">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="7"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="86">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="38.5"/>
+							<Node>
+								<SimplePredicate field="double(x1)" operator="lessOrEqual" value="9.0"/>
+								<Node score="0.0" recordCount="3">
+									<SimplePredicate field="double(x3)" operator="lessOrEqual" value="4.0"/>
+									<ScoreDistribution value="0.0" recordCount="3"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="4">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="4"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="11">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="11"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="6">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="6"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="87">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="10">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="4.0"/>
+							<ScoreDistribution value="0.0" recordCount="10"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="5">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="14.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="5"/>
+						</Node>
+						<Node score="0.0" recordCount="6">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="38.5"/>
+							<ScoreDistribution value="0.0" recordCount="6"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="3">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="3"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="88">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="44.5"/>
+							<Node>
+								<SimplePredicate field="double(x3)" operator="lessOrEqual" value="14.0"/>
+								<Node score="0.0" recordCount="3">
+									<SimplePredicate field="double(x3)" operator="lessOrEqual" value="4.0"/>
+									<ScoreDistribution value="0.0" recordCount="3"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="7">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="7"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="7">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="7"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="7">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="7"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="89">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="11">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+							<ScoreDistribution value="0.0" recordCount="11"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node>
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="27.5"/>
+							<Node score="1.0" recordCount="4">
+								<SimplePredicate field="double(x4)" operator="lessOrEqual" value="20.0"/>
+								<ScoreDistribution value="0.0" recordCount="0"/>
+								<ScoreDistribution value="1.0" recordCount="4"/>
+							</Node>
+							<Node score="0.0" recordCount="4">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="4"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="5">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="90">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<Node>
+								<SimplePredicate field="double(x2)" operator="lessOrEqual" value="12.5"/>
+								<Node score="0.0" recordCount="3">
+									<SimplePredicate field="double(x4)" operator="lessOrEqual" value="5.5"/>
+									<ScoreDistribution value="0.0" recordCount="3"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="6">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="6"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="8">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="8"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="7">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="7"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="91">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="38.5"/>
+							<Node>
+								<SimplePredicate field="double(x4)" operator="lessOrEqual" value="20.0"/>
+								<Node score="0.0" recordCount="4">
+									<SimplePredicate field="double(x4)" operator="lessOrEqual" value="5.5"/>
+									<ScoreDistribution value="0.0" recordCount="4"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="4">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="4"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="5">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="5"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="11">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="11"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="92">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="5">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+							<ScoreDistribution value="0.0" recordCount="5"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="11">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="14.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="11"/>
+						</Node>
+						<Node score="0.0" recordCount="6">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="38.5"/>
+							<ScoreDistribution value="0.0" recordCount="6"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="2">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="2"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="93">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="38.5"/>
+							<Node>
+								<SimplePredicate field="double(x4)" operator="lessOrEqual" value="20.0"/>
+								<Node score="0.0" recordCount="4">
+									<SimplePredicate field="double(x1)" operator="lessOrEqual" value="4.0"/>
+									<ScoreDistribution value="0.0" recordCount="4"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="5">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="5"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="12">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="12"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="3">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="3"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="94">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x1)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="8">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+							<ScoreDistribution value="0.0" recordCount="8"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="7">
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="9.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="7"/>
+						</Node>
+						<Node score="0.0" recordCount="3">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="38.5"/>
+							<ScoreDistribution value="0.0" recordCount="3"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="6">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="6"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="95">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x3)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="7">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="4.0"/>
+							<ScoreDistribution value="0.0" recordCount="7"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="9">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="14.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="9"/>
+						</Node>
+						<Node score="0.0" recordCount="6">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="44.5"/>
+							<ScoreDistribution value="0.0" recordCount="6"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="2">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="2"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="96">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x3)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="44.5"/>
+							<Node score="0.0" recordCount="8">
+								<SimplePredicate field="double(x4)" operator="lessOrEqual" value="5.5"/>
+								<ScoreDistribution value="0.0" recordCount="8"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+							<Node score="1.0" recordCount="2">
+								<SimplePredicate field="double(x3)" operator="lessOrEqual" value="14.0"/>
+								<ScoreDistribution value="0.0" recordCount="0"/>
+								<ScoreDistribution value="1.0" recordCount="2"/>
+							</Node>
+							<Node score="0.0" recordCount="6">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="6"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="8">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="8"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="97">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x3)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="2">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+							<ScoreDistribution value="0.0" recordCount="2"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="12">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="14.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="12"/>
+						</Node>
+						<Node score="0.0" recordCount="3">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<ScoreDistribution value="0.0" recordCount="3"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="7">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="7"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="98">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x3)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="9">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="4.0"/>
+							<ScoreDistribution value="0.0" recordCount="9"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="5">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="20.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="5"/>
+						</Node>
+						<Node score="0.0" recordCount="5">
+							<SimplePredicate field="double(x3)" operator="lessOrEqual" value="44.5"/>
+							<ScoreDistribution value="0.0" recordCount="5"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="5">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="99">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x2)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node score="0.0" recordCount="7">
+							<SimplePredicate field="double(x2)" operator="lessOrEqual" value="2.5"/>
+							<ScoreDistribution value="0.0" recordCount="7"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="8">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="20.0"/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="8"/>
+						</Node>
+						<Node score="0.0" recordCount="4">
+							<SimplePredicate field="double(x4)" operator="lessOrEqual" value="55.5"/>
+							<ScoreDistribution value="0.0" recordCount="4"/>
+							<ScoreDistribution value="1.0" recordCount="0"/>
+						</Node>
+						<Node score="1.0" recordCount="5">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+			<Segment id="100">
+				<True/>
+				<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+					<MiningSchema>
+						<MiningField name="double(x1)"/>
+						<MiningField name="double(x4)"/>
+					</MiningSchema>
+					<Node>
+						<True/>
+						<Node>
+							<SimplePredicate field="double(x1)" operator="lessOrEqual" value="27.5"/>
+							<Node>
+								<SimplePredicate field="double(x4)" operator="lessOrEqual" value="20.0"/>
+								<Node score="0.0" recordCount="4">
+									<SimplePredicate field="double(x4)" operator="lessOrEqual" value="5.5"/>
+									<ScoreDistribution value="0.0" recordCount="4"/>
+									<ScoreDistribution value="1.0" recordCount="0"/>
+								</Node>
+								<Node score="1.0" recordCount="7">
+									<True/>
+									<ScoreDistribution value="0.0" recordCount="0"/>
+									<ScoreDistribution value="1.0" recordCount="7"/>
+								</Node>
+							</Node>
+							<Node score="0.0" recordCount="8">
+								<True/>
+								<ScoreDistribution value="0.0" recordCount="8"/>
+								<ScoreDistribution value="1.0" recordCount="0"/>
+							</Node>
+						</Node>
+						<Node score="1.0" recordCount="5">
+							<True/>
+							<ScoreDistribution value="0.0" recordCount="0"/>
+							<ScoreDistribution value="1.0" recordCount="5"/>
+						</Node>
+					</Node>
+				</TreeModel>
+			</Segment>
+		</Segmentation>
+	</MiningModel>
+</PMML>
