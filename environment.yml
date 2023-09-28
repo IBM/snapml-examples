@@ -16,7 +16,7 @@ dependencies:
   - matplotlib
   - pip:
     - kaggle
-    - snapml==1.14.0
+    - snapml
     - xgboost==1.7.4
     - lightgbm==3.1.1
     - scrapbook
